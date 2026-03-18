@@ -31,5 +31,14 @@ public class Main {
                 LocalDate.of(2026, 5, 25), products.stream().filter(baby -> baby.getCategory().equals("baby")).toList(), new Customer(629182, "Antonio", 2)));
 
         System.out.println(orders);
+
+        List<String> couponBoys = products.stream()
+                .filter(product -> product.getCategory().equals("boys"))
+                .map(p -> p.getName() +
+                        " | originale: " + p.getPrice() +
+                        " | scontato: " + (p.getPrice() * 0.9))
+                .toList();
+
+        couponBoys.forEach(System.out::println);
     }
 }
