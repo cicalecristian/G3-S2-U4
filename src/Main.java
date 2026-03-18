@@ -40,5 +40,13 @@ public class Main {
                 .toList();
 
         couponBoys.forEach(System.out::println);
+
+        List<Product> filteredClient = orders.stream()
+                .filter(product -> product.getCustomer().getTier() == 2)
+                .filter(data -> !data.getOrderDate().isBefore(LocalDate.of(2026, 5, 21)) &&
+                        !data.getDeliveryDate().isAfter(LocalDate.of(2026, 5, 25)))
+                .flatMap(product -> product.getProducts().stream()).toList();
+
+        System.out.println(filteredClient);
     }
 }
