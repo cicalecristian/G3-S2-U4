@@ -1,5 +1,8 @@
+import entities.Customer;
+import entities.Order;
 import entities.Product;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,5 +26,10 @@ public class Main {
         List<Product> filteredBooks = products.stream().filter(book -> book.getCategory().equals("books") && book.getPrice() > 100).toList();
         filteredBooks.forEach(System.out::println);
 
+        List<Order> orders = new ArrayList<>();
+        orders.add(new Order("in consegna", 363738, LocalDate.of(2026, 5, 21),
+                LocalDate.of(2026, 5, 25), products.stream().filter(baby -> baby.getCategory().equals("baby")).toList(), new Customer(629182, "Antonio", 2)));
+
+        System.out.println(orders);
     }
 }
